@@ -1,12 +1,14 @@
 import * as d3 from 'd3';
 import './style.css';
+import {LanguageData, data} from "./data";
 
-const dataset = [40, 80, 150, 160, 230, 260];
+const DIAGRAM_HEIGHT = 400; // in px
+
 const root = d3.select("div.chart-container");
+root.style("height", DIAGRAM_HEIGHT + 'px');
 
-const draw = (data: number[]) => {
-	root.style("height", Math.max(...data) + 'px');
-
+const draw = (data: LanguageData[]) => {
+	const scale = DIAGRAM_HEIGHT / Math.max(...data.map((e) => e.value));
 	root
 		.selectAll('div.divchart')
 		.data(data)
@@ -16,8 +18,8 @@ const draw = (data: number[]) => {
 			.attr("class", "divchart")
 			.transition()
 			.duration(1000)
-			.style("height", (d) => d + "px")
-			.text((d, i, a) => d);
+			.style("height", (d) => (d.value * scale) + "px")
+			.text((d, i, a) => d.value);
 }
 
-draw(dataset);
+draw(data);
