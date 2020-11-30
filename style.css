@@ -1,12 +1,14 @@
 .chart-container {
   display: flex;
+  align-items: flex-end;
 }
 
 .divchart {
   font: 10px sans-serif;
   background-color: steelblue;
-  text-align: right;
+  text-align: center;
   padding: 3px;
   margin: 1px;
   color: white;
+  width: 100%;
 }
