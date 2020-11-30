@@ -3,7 +3,7 @@
   align-items: flex-end;
 }
 
-.divchart {
+.chart {
   font: 10px sans-serif;
   background-color: steelblue;
   text-align: center;
@@ -11,4 +11,8 @@
   margin: 1px;
   color: white;
   width: 100%;
+}
+
+.chart-caption {
+  text-align: center;
 }
