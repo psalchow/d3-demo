@@ -9,9 +9,11 @@ const draw = (dataset: number[]) => {
 
 	divs.enter().append("div").style("width", "0px");
 
-	divs.transition().duration(1000).style("width", function(d) { return d + "px"; })
- 	.attr("class", "divchart")
-    .text((d) => d);
+	divs.transition()
+		.duration(1000)
+		.style("width", (d) => d + "px")
+		.attr("class", "divchart")
+		.text((d) => d);
 }
 
 draw(data);
