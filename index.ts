@@ -2,10 +2,10 @@ import * as d3 from 'd3';
 import './style.css';
 
 const data = [40, 80, 150, 160, 230, 260];
-const body = d3.select("body");
+const root = d3.select("root div.chart-container");
 
 const draw = () => {
-	body
+	root
 		.selectAll('div.divchart')
 		.data(data)
 		.enter()
