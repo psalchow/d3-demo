@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import './style.css';
 
 const data = [40, 80, 150, 160, 230, 260];
-const root = d3.select("root div.chart-container");
+const root = d3.select("div.chart-container");
 
 const draw = () => {
 	root
