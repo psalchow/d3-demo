@@ -1,10 +1,12 @@
 import * as d3 from 'd3';
 import './style.css';
 
-const data = [40, 80, 150, 160, 230, 260];
+const dataset = [40, 80, 150, 160, 230, 260];
 const root = d3.select("div.chart-container");
 
-const draw = () => {
+const draw = (data: number[]) => {
+	root.style("height", Math.max(...data) + 'px');
+
 	root
 		.selectAll('div.divchart')
 		.data(data)
@@ -18,4 +20,4 @@ const draw = () => {
 			.text((d, i, a) => d);
 }
 
-draw();
+draw(dataset);
