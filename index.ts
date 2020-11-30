@@ -6,19 +6,16 @@ const body = d3.select("body");
 
 const draw = () => {
 	body
-		.selectAll('div')
+		.selectAll('div.divchart')
 		.data(data)
 		.enter()
 		.append("div")
-			.style("width", "0px")
+			.style("height", "0px")
 			.attr("class", "divchart")
 			.transition()
 			.duration(1000)
-			.style("width", (d) => d + "px")
-			.text((d, i, a) => {
-				console.log(d, i, a);
-				return d;
-			});
+			.style("height", (d) => d + "px")
+			.text((d, i, a) => d);
 }
 
 draw();

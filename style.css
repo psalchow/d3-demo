@@ -1,3 +1,7 @@
+.chart-container {
+  display: flex;
+}
+
 .divchart {
   font: 10px sans-serif;
   background-color: steelblue;
