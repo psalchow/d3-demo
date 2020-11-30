@@ -8,7 +8,7 @@ const root = d3.select("div.chart-container");
 root.style("height", DIAGRAM_HEIGHT + 'px');
 
 const draw = (data: LanguageData[]) => {
-	const scale = DIAGRAM_HEIGHT / Math.max(...data.map((e) => e.value));
+	const scale = (DIAGRAM_HEIGHT - 64) / Math.max(...data.map((e) => e.value));
 	const chartEntry = root
 		.selectAll('div.divchart')
 		.data(data)

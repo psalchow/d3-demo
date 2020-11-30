@@ -1,6 +1,12 @@
 .chart-container {
   display: flex;
   align-items: flex-end;
+  margin: 4px
+}
+
+.chart-entry {
+  width: 100%;
+  padding: 3px;
 }
 
 .chart {
