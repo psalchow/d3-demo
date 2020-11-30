@@ -1,8 +1,8 @@
-import {select} from 'd3';
+import * as d3 from 'd3';
 import './style.css';
 
 const data = [40, 80, 150, 160, 230, 260];
-const body = select("body");
+const body = d3.select("body");
 
 const draw = () => {
 	const divs = body.selectAll('div').data(data);
