@@ -5,15 +5,20 @@ const data = [40, 80, 150, 160, 230, 260];
 const body = d3.select("body");
 
 const draw = () => {
-	const divs = body.selectAll('div').data(data);
-
-	divs.enter().append("div").style("width", "0px").attr("class", "divchart");
-
-	divs
-		//.transition()
-		//.duration(1000)
-		.style("width", (d) => d + "px")
-		.text((d) => d);
+	body
+		.selectAll('div')
+		.data(data)
+		.enter()
+		.append("div")
+			.style("width", "0px")
+			.attr("class", "divchart")
+			.transition()
+			.duration(1000)
+			.style("width", (d) => d + "px")
+			.text((d, i, a) => {
+				console.log(d, i, a);
+				return d;
+			});
 }
 
 draw();
