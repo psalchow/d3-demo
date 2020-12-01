@@ -20,7 +20,10 @@ const draw = (data: LanguageData[]) => {
         .style("height", "0px")
         .attr("class", "chart")
 		.on('mouseenter', (event, data) => {
-			d3.select(event.currentTarget).transition().duration(100).style("margin-left", 0).style("margin-right", 0)
+			d3.select(event.currentTarget).style("margin-left", 0).style("margin-right", 0)
+		})
+		.on('mouseleave', (event) => {
+			d3.select(event.currentTarget).style("margin-left", null).style("margin-right", null)
 		})
         .transition()
         .duration(1000)
