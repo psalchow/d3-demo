@@ -18,13 +18,14 @@ const draw = (data: LanguageData[]) => {
 
     chartEntry.append("div")
         .style("height", "0px")
+		.style("background-color", (data) => data.color)
         .attr("class", "chart")
-		.on('mouseenter', (event, data) => {
-			d3.select(event.currentTarget).style("margin-left", 0).style("margin-right", 0)
-		})
-		.on('mouseleave', (event) => {
-			d3.select(event.currentTarget).style("margin-left", null).style("margin-right", null)
-		})
+        .on('mouseenter', (event) => {
+            d3.select(event.currentTarget).style("margin-left", 0).style("margin-right", 0).style("background-color", null);
+        })
+        .on('mouseleave', (event, data) => {
+            d3.select(event.currentTarget).style("margin-left", null).style("margin-right", null).style("background-color", data.color);
+        })
         .transition()
         .duration(1000)
         .style("height", (d) => (d.value * scale) + "px")
