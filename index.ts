@@ -7,6 +7,8 @@ const DIAGRAM_HEIGHT = 400; // in px
 const root = d3.select("div.chart-container");
 root.style("height", DIAGRAM_HEIGHT + 'px');
 
+const getElementForEvent = (event: any): d3.Selection<any, unknown, null, undefined> => d3.select(event.currentTarget);
+
 const draw = (data: LanguageData[]) => {
     const scale = (DIAGRAM_HEIGHT - 64) / Math.max(...data.map((e) => e.value));
     const chartEntry = root
@@ -21,13 +23,13 @@ const draw = (data: LanguageData[]) => {
         .style("background-color", (data) => data.color)
         .attr("class", "chart")
         .on('mouseenter', (event) =>
-            d3.select(event.currentTarget)
+            getElementForEvent(event)
                 .style("margin-left", 0)
                 .style("margin-right", 0)
                 .style("background-color", null)
         )
         .on('mouseleave', (event, data) =>
-            d3.select(event.currentTarget)
+            getElementForEvent(event)
                 .style("margin-left", null)
                 .style("margin-right", null)
                 .style("background-color", data.color)
