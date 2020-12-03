@@ -24,7 +24,7 @@ const draw = (data: LanguageData[]) => {
             d3.select(event.currentTarget)
                 .style("margin-left", 0)
                 .style("margin-right", 0)
-                .style("background-color", null)
+                .style("background-color", "yellow")
         )
         .on('mouseleave', (event, data) =>
             d3.select(event.currentTarget)
