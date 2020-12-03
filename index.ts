@@ -23,18 +23,15 @@ const draw = (data: LanguageData[]) => {
 
     chartEntry.append("div")
         .style("height", "0px")
-        .style("background-color", (data) => data.color)
         .attr("class", "chart")
         .on('mouseenter', (event) => {
             const element = getElementForEvent(event);
-            enlargeElement(element)
-                .style("background-color", null)
-        }
+            console.log("Mouse Enter: ", element);
+            }
         )
         .on('mouseleave', (event, data) => {
-            const element = getElementForEvent(event);
-            resetElementSize(element)
-                    .style("background-color", data.color);
+                const element = getElementForEvent(event);
+                console.log("Mouse Leave: ", element);
             }
         )
         .transition()
