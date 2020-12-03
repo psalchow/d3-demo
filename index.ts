@@ -9,6 +9,9 @@ root.style("height", DIAGRAM_HEIGHT + 'px');
 
 const getElementForEvent = (event: any): d3.Selection<any, unknown, null, undefined> => d3.select(event.currentTarget);
 
+const enlargeElement = (element: d3.Selection<any, unknown, null, undefined>)  => element.style("margin-left", 0).style("margin-right", 0)
+const resetElementSize = (element: d3.Selection<any, unknown, null, undefined>)  => element.style("margin-left", null).style("margin-right", null)
+
 const draw = (data: LanguageData[]) => {
     const scale = (DIAGRAM_HEIGHT - 64) / Math.max(...data.map((e) => e.value));
     const chartEntry = root
@@ -22,17 +25,17 @@ const draw = (data: LanguageData[]) => {
         .style("height", "0px")
         .style("background-color", (data) => data.color)
         .attr("class", "chart")
-        .on('mouseenter', (event) =>
-            getElementForEvent(event)
-                .style("margin-left", 0)
-                .style("margin-right", 0)
+        .on('mouseenter', (event) => {
+            const element = getElementForEvent(event);
+            enlargeElement(element)
                 .style("background-color", null)
+        }
         )
-        .on('mouseleave', (event, data) =>
-            getElementForEvent(event)
-                .style("margin-left", null)
-                .style("margin-right", null)
-                .style("background-color", data.color)
+        .on('mouseleave', (event, data) => {
+            const element = getElementForEvent(event);
+            resetElementSize(element)
+                    .style("background-color", data.color);
+            }
         )
         .transition()
         .duration(1000)
